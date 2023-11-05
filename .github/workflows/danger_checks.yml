@@ -9,18 +9,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK
-        uses: actions/setup-java@v1
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
         with:
+          distribution: 'zulu'
           java-version: 17
 
-      - name: Set up Ruby
+      - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
         with:
-            ruby-version: '2.6'
+          ruby-version: 2.6
 
       - name: Danger Checks
         run: |
+          ./gradlew dependencyUpdates
           gem install bundler
           bundle install
           bundle exec danger
