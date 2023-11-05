@@ -1,3 +1,5 @@
 source "https://rubygems.org"
 
-gem 'danger', '~> 9.3', '>= 9.3.2'
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+gem "danger"
