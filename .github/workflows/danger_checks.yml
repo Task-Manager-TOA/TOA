@@ -15,7 +15,7 @@ jobs:
           java-version: 17
 
       - name: Set up Ruby
-      - uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
             ruby-version: '3.2'
       - run: bundle exec rake
