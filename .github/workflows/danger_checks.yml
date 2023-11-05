@@ -15,9 +15,10 @@ jobs:
           java-version: 17
 
       - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+            ruby-version: '3.2'
+      - run: bundle exec rake
 
       - name: Danger Checks
         run: |
