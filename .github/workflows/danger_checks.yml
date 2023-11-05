@@ -15,9 +15,9 @@ jobs:
           java-version: 17
 
       - name: Set up Ruby
-        uses: actions/setup-ruby@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.6'
 
       - name: Danger Checks
         run: |
