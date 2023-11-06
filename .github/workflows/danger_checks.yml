@@ -20,6 +20,10 @@ jobs:
         with:
           ruby-version: 2.6
 
+
+      - name: Perform Git operation
+        run: git fetch --depth=100
+
       - name: Update RubyGems
         run: gem update --system 3.2.3
 
