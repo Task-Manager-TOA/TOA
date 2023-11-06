@@ -1,26 +1,30 @@
 name: Danger Checks
 
-on:
-  pull_request:
-    branches:
-      - main
+on: pull_request
 
 jobs:
   danger:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Ruby
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 2.6
 
-      - name: Install dependencies
+      - name: Danger Checks
         run: |
           gem install bundler
           bundle install
+          bundle exec danger
 
-      - name: Run Danger
-        run: bundle exec danger
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.TOA_TOKEN }}
