@@ -22,6 +22,7 @@ jobs:
 
       - name: Danger Checks
         run: |
+          git fetch --depth=1000
           gem install bundler
           bundle install
           bundle exec danger
