@@ -14,6 +14,5 @@ end
 
 if git.deletions > git.additions
    message "Code Cleanup! 🎉🎉🎉"
-
-
+end
 
