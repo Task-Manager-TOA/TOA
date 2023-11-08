@@ -71,4 +71,5 @@ dependencies {
 
 subprojects {
     apply(from = "../buildscript/ktlint.gradle")
+    apply(from = "../buildscript/detekt.gradle")
 }
