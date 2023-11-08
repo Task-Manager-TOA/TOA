@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      - uses: actions/checkout@v1
+        uses: actions/checkout@v1
 
       - name: Set up JDK
         uses: actions/setup-java@v1
@@ -15,7 +15,9 @@ jobs:
           java-version: 17
 
       - name: Build Project
-        run: ./gradlew assemble
+        run: |
+          chmod +x ./gradlew 
+          ./gradlew assemble
 
       - name: Run Tests
         run: ./gradlew test
