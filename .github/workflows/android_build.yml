@@ -15,7 +15,12 @@ jobs:
           java-version: 17
 
       - name: Build Project
-        run: ./gradlew assemble
+        run: |
+          chmod +x ./gradlew 
+          ./gradlew assemble
 
       - name: Run Tests
         run: ./gradlew test
+
+      - name: Lint Checks
+        run: ./gradlew ktlintCheck

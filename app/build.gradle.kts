@@ -67,3 +67,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
+
+
+subprojects {
+    apply(from = "../buildscript/ktlint.gradle")
+}
