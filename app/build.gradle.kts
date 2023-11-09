@@ -1,7 +1,14 @@
+import com.android.build.gradle.internal.dsl.decorator.SupportedPropertyType.Collection.List.type
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+
+apply {
+    from(file("../buildscript/hooks.gradle"))
+}
+
 
 android {
     namespace = "ru.fursa.toa"
@@ -47,6 +54,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -68,9 +76,20 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
 
-
 subprojects {
     apply(from = "../buildscript/ktlint.gradle")
     apply(from = "../buildscript/detekt.gradle")
-    apply(from = "../buildscript/git-hooks.gradle")
+
+    afterEvaluate {
+        gradle.projectsEvaluated {
+            tasks.withType(JavaCompile::class.java).configureEach {
+                sourceCompatibility = "17"
+                targetCompatibility = "17"
+            }
+        }
+    }
+
 }
+
+
+
