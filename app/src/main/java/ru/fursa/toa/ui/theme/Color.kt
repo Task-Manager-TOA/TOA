@@ -2,12 +2,22 @@
 
 package ru.fursa.toa.ui.theme
 
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+private val PrimaryBlue = Color(0xFF0A3751)
+private val SecondaryOrange = Color(0xFFFC8138)
+private val BackgroundBlue = Color(0xFFF4F4F8)
+private val OnBackgroundBlack = Color(0xFF282828)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val lightColorPalette = lightColorScheme(
+    primary = PrimaryBlue,
+    onPrimary = Color.White,
+    secondary = SecondaryOrange,
+    onSecondary = Color.White,
+    background = BackgroundBlue,
+    onBackground = OnBackgroundBlack,
+    surface = Color.White,
+    onSurface = PrimaryBlue
+)
+
