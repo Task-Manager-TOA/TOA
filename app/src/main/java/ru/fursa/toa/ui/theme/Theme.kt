@@ -42,7 +42,7 @@ fun ToaandroidTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = TOATypography,
         content = content
     )
 }
