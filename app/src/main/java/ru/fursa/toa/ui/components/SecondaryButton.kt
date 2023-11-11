@@ -5,6 +5,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults.textButtonColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -24,13 +25,17 @@ fun SecondaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    contentColor: Color = MaterialTheme.colorScheme.primary
 ) {
-
+    val buttonColors = textButtonColors(
+        containerColor = contentColor
+    )
     TextButton(
         onClick = onClick,
         modifier = modifier
             .fillMaxWidth()
             .height(dimensionResource(id = R.dimen.button_height)),
+        colors = buttonColors,
         shape = RoundedCornerShape(50),
     ) {
         Text(text = text.toUpperCase(Locale.current))

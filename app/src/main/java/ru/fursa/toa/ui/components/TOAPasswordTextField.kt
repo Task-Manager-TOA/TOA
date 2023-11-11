@@ -21,7 +21,7 @@ import ru.fursa.toa.ui.theme.TOATheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TOATextField(
+fun TOAPasswordTextField(
     text: String,
     onTextChanged: (String) -> Unit,
     labelText: String,
@@ -36,6 +36,7 @@ fun TOATextField(
         value = text,
         colors = textColors,
         onValueChange = onTextChanged,
+        visualTransformation = PasswordVisualTransformation(),
         label = { Text(text = labelText, color = Color.White) },
         shape = RoundedCornerShape(50),
         modifier = modifier.heightIn(dimensionResource(id = R.dimen.text_field_height))
@@ -51,10 +52,10 @@ fun TOATextField(
     uiMode = Configuration.UI_MODE_NIGHT_NO
 )
 @Composable
-fun PreviewTOATextField() {
+fun PreviewTOAPasswordTextField() {
     TOATheme {
         Surface {
-            TOATextField(
+            TOAPasswordTextField(
                 text = "TOA text field",
                 onTextChanged = { },
                 labelText = "Label"
