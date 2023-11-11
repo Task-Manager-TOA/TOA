@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">toa-android</string>
     <string name="password">Password</string>
-    <string name="username">Username</string>
     <string name="logo">logo</string>
     <string name="sign_up">Sign up</string>
     <string name="log_in">Log in</string>
+    <string name="email">Email</string>
 </resources>
