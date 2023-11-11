@@ -1,4 +1,4 @@
-package ru.fursa.toa.ui.login
+package ru.fursa.toa.login.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image

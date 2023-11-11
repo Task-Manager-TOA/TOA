@@ -1,4 +1,4 @@
-package ru.fursa.toa.ui.login
+package ru.fursa.toa.login.ui
 
 data class LoginViewState(
     val username: String,
