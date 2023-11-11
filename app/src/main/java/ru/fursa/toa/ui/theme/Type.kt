@@ -13,6 +13,7 @@ private val UrbanistSemiBold = FontFamily(Font(R.font.urbanist_semibold))
 private val UrbanistBold = FontFamily(Font(R.font.urbanist_bold))
 private val UrbanistMedium = FontFamily(Font(R.font.urbanist_medium))
 private val UrbanistLight = FontFamily(Font(R.font.urbanist_light))
+private val UrbanistRegular = FontFamily(Font(R.font.urbanist_regular))
 
 val TOATypography = Typography(
     headlineLarge = TextStyle(
@@ -36,7 +37,7 @@ val TOATypography = Typography(
         fontSize = 13.sp
     ),
     labelMedium = TextStyle(
-        fontFamily = UrbanistBold,
-        fontSize = 13.sp
+        fontFamily = UrbanistRegular,
+        fontSize = 12.sp
     )
 )
