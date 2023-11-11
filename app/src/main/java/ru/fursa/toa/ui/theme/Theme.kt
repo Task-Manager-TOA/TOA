@@ -25,7 +25,7 @@ fun TOATheme(
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            if (darkTheme) lightColorPalette else lightColorPalette
         }
 
         darkTheme -> lightColorPalette
@@ -41,7 +41,7 @@ fun TOATheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = lightColorPalette,
         typography = TOATypography,
         content = content
     )
