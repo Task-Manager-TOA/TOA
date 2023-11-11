@@ -1,4 +1,4 @@
-package ru.fursa.toa.ui.components
+package ru.fursa.toa.core.ui.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.heightIn
@@ -17,11 +17,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import ru.fursa.toa.R
-import ru.fursa.toa.ui.theme.TOATheme
+import ru.fursa.toa.core.ui.theme.TOATheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TOAPasswordTextField(
+fun TOATextField(
     text: String,
     onTextChanged: (String) -> Unit,
     labelText: String,
@@ -36,7 +36,6 @@ fun TOAPasswordTextField(
         value = text,
         colors = textColors,
         onValueChange = onTextChanged,
-        visualTransformation = PasswordVisualTransformation(),
         label = { Text(text = labelText, color = Color.White) },
         shape = RoundedCornerShape(50),
         modifier = modifier.heightIn(dimensionResource(id = R.dimen.text_field_height))
@@ -52,10 +51,10 @@ fun TOAPasswordTextField(
     uiMode = Configuration.UI_MODE_NIGHT_NO
 )
 @Composable
-fun PreviewTOAPasswordTextField() {
+fun PreviewTOATextField() {
     TOATheme {
         Surface {
-            TOAPasswordTextField(
+            TOATextField(
                 text = "TOA text field",
                 onTextChanged = { },
                 labelText = "Label"

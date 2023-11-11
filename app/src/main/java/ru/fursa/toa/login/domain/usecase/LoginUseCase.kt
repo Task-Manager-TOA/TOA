@@ -1,5 +1,15 @@
 package ru.fursa.toa.login.domain.usecase
 
+import ru.fursa.toa.core.data.DataResponse
+import ru.fursa.toa.login.domain.model.LoginResponse
+
+
+@JvmInline
+value class Email(val email: String)
+
+@JvmInline
+value class Password(val password: String)
+
 interface LoginUseCase {
-    suspend fun login(email: String, password: String)
+    suspend fun login(email: Email, password: Password): DataResponse<LoginResponse>
 }

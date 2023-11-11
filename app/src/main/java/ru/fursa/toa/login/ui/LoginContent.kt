@@ -21,11 +21,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.fursa.toa.R
-import ru.fursa.toa.ui.components.PrimaryButton
-import ru.fursa.toa.ui.components.SecondaryButton
-import ru.fursa.toa.ui.components.TOAPasswordTextField
-import ru.fursa.toa.ui.components.TOATextField
-import ru.fursa.toa.ui.theme.TOATheme
+import ru.fursa.toa.core.ui.components.PrimaryButton
+import ru.fursa.toa.core.ui.components.SecondaryButton
+import ru.fursa.toa.core.ui.components.TOAPasswordTextField
+import ru.fursa.toa.core.ui.components.TOATextField
+import ru.fursa.toa.core.ui.theme.TOATheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
