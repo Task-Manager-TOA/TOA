@@ -1,5 +1,8 @@
 package ru.fursa.toa.login.domain.model
-
-data class LoginResponse(
-    val authToken: String,
-)
+sealed class LoginResult {
+    data class Success(val authToken: String): LoginResult()
+    sealed class Failure: LoginResult() {
+        object InvalidCredentials: Failure()
+        object Unknown: Failure()
+    }
+}
