@@ -1,4 +1,4 @@
-package ru.fursa.toa.ui.components
+package ru.fursa.toa.core.ui.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -18,7 +18,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import ru.fursa.toa.R
-import ru.fursa.toa.ui.theme.TOATheme
+import ru.fursa.toa.core.ui.theme.TOATheme
 
 @Composable
 fun PrimaryButton(

@@ -1,4 +1,4 @@
-package ru.fursa.toa.ui.theme
+package ru.fursa.toa.core.ui.theme
 
 import android.app.Activity
 import android.os.Build

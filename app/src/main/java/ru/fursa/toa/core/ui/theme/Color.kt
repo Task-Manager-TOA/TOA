@@ -1,6 +1,6 @@
 @file:Suppress("MagicNumber")
 
-package ru.fursa.toa.ui.theme
+package ru.fursa.toa.core.ui.theme
 
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
