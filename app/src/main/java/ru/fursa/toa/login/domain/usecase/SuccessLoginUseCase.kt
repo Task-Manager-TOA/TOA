@@ -7,5 +7,4 @@ class SuccessLoginUseCase : CredentialsLoginUseCase {
 
     override suspend fun invoke(credentials: Credentials): LoginResult {
         return LoginResult.Success("")
-    }
 }
