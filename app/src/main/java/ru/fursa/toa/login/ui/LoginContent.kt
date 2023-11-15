@@ -30,7 +30,7 @@ import ru.fursa.toa.core.ui.theme.TOATheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginContent(
-    viewState: LoginViewState,
+    viewState: LoginState,
     onEmailChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     onLoginClick: () -> Unit,
@@ -54,14 +54,14 @@ fun LoginContent(
             )
             Spacer(modifier = Modifier.height(120.dp))
             TOATextField(
-                text = viewState.email,
+                text = "ilya.fursa08@gmail.com",
                 onTextChanged = { username -> onEmailChanged(username) },
                 labelText = stringResource(R.string.email),
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(12.dp))
             TOAPasswordTextField(
-                text = viewState.password,
+                text = "1234567890",
                 onTextChanged = { password -> onPasswordChanged(password) },
                 labelText = stringResource(R.string.password),
                 modifier = Modifier.fillMaxWidth()
@@ -93,10 +93,7 @@ fun LoginContent(
 @Composable
 fun LoginContentPreview() {
 
-    val viewState = LoginViewState(
-        email = "ilya.fursa08@gmail.com",
-        password = "12345678"
-    )
+    val viewState = LoginState.Initial
 
     TOATheme {
         LoginContent(
