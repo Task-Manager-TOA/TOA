@@ -1,10 +1,10 @@
 package ru.fursa.toa.login.domain.model
 @JvmInline
-value class Email(val email: String)
+value class Email(val value: String)
 @JvmInline
-value class Password(val password: String)
+value class Password(val value: String)
 
 data class Credentials(
-    val email: Email,
-    val password: Password
+    val email: Email = Email(""),
+    val password: Password = Password("")
 )
