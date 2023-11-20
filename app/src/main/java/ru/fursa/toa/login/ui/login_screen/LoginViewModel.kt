@@ -31,7 +31,8 @@ class LoginViewModel(
     }
 
     fun loginButtonClicked() {
-
+       val currentCredentials = _viewState.value.credentials
+       _viewState.value = LoginViewState.Submitting(credentials = currentCredentials)
     }
 
     fun signUpButtonClicked() {
