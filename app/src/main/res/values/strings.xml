@@ -5,4 +5,9 @@
     <string name="sign_up">Sign up</string>
     <string name="log_in">Log in</string>
     <string name="email">Email</string>
+    <string name="error_invalid_creds">Your email and/or password is incorrect</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="err_login_failure">Error login</string>
+    <string name="err_empty_email">Please type email</string>
+    <string name="err_empty_password">Please type password</string>
 </resources>

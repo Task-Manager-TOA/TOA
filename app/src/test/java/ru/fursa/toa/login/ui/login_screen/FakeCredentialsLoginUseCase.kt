@@ -10,12 +10,12 @@ class FakeCredentialsLoginUseCase {
 
     val mock: CredentialsLoginUseCase = mockk()
 
-    fun mockLoginResult(
+    fun mockLoginResultForCredentials(
         credentials: Credentials,
-        loginResult: LoginResult,
+        result: LoginResult,
     ) {
         coEvery {
-            mock.invoke(credentials)
-        } returns loginResult
+            mock(credentials)
+        } returns result
     }
 }

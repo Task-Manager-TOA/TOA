@@ -1,11 +1,16 @@
 package ru.fursa.toa.login.ui.login_screen
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import ru.fursa.toa.R
+import ru.fursa.toa.core.utils.UiText
 import ru.fursa.toa.login.domain.model.Credentials
 import ru.fursa.toa.login.domain.model.Email
+import ru.fursa.toa.login.domain.model.LoginResult
 import ru.fursa.toa.login.domain.model.Password
 import ru.fursa.toa.login.domain.usecase.CredentialsLoginUseCase
 
@@ -31,8 +36,38 @@ class LoginViewModel(
     }
 
     fun loginButtonClicked() {
-       val currentCredentials = _viewState.value.credentials
-       _viewState.value = LoginViewState.Submitting(credentials = currentCredentials)
+        val currentCredentials = _viewState.value.credentials
+
+        _viewState.value = LoginViewState.Submitting(
+            credentials = currentCredentials,
+        )
+
+        viewModelScope.launch {
+            val loginResult = loginUseCase(currentCredentials)
+
+            _viewState.value = when (loginResult) {
+                is LoginResult.Failure.InvalidCredentials -> {
+                    LoginViewState.SubmissionError(
+                        credentials = currentCredentials,
+                        errorMessage = UiText.ResourceText(R.string.error_invalid_creds),
+                    )
+                }
+                is LoginResult.Failure.Unknown -> {
+                    LoginViewState.SubmissionError(
+                        credentials = currentCredentials,
+                        errorMessage = UiText.ResourceText(R.string.unknown_error),
+                    )
+                }
+                is LoginResult.Failure.EmptyCredentials -> {
+                    LoginViewState.Active(
+                        credentials = currentCredentials,
+                        emailInputErrorMessage = UiText.ResourceText(R.string.err_empty_email),
+                        passwordInputErrorMessage = UiText.ResourceText(R.string.err_empty_password),
+                    )
+                }
+                else -> _viewState.value
+            }
+        }
     }
 
     fun signUpButtonClicked() {

@@ -156,7 +156,9 @@ class LoginViewStateProvider : PreviewParameterProvider<LoginViewState> {
 
             return sequenceOf(
                 LoginViewState.Initial,
-                LoginViewState.Active(activeCredentials),
+                LoginViewState.Active(activeCredentials,
+                    emailInputErrorMessage = UiText.StringText("Please enter an email."),
+                    passwordInputErrorMessage = UiText.StringText("Please enter a password"),),
                 LoginViewState.Submitting(activeCredentials),
                 LoginViewState.SubmissionError(
                     credentials = activeCredentials,
