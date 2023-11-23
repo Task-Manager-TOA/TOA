@@ -1,6 +1,7 @@
 package ru.fursa.toa.login.domain.usecase
 
 import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import ru.fursa.toa.core.data.Result
@@ -82,7 +83,7 @@ class ProdCredentialsCredentialsLoginUseCaseTest {
     }
 
     @Test
-    fun testInvalidCredentialLogin() = runBlockingTest {
+    fun testInvalidCredentialLogin() = runTest {
         val loginResponse: Result<LoginResponse> = Result.Error(
             InvalidCredentialsException()
         )

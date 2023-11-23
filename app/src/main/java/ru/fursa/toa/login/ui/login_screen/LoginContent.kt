@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,6 +34,8 @@ import ru.fursa.toa.core.ui.components.SecondaryButton
 import ru.fursa.toa.core.ui.components.TOAPasswordTextField
 import ru.fursa.toa.core.ui.components.TOATextField
 import ru.fursa.toa.core.ui.theme.TOATheme
+import ru.fursa.toa.core.utils.UiText
+import ru.fursa.toa.core.utils.getString
 import ru.fursa.toa.login.domain.model.Credentials
 import ru.fursa.toa.login.domain.model.Email
 import ru.fursa.toa.login.domain.model.Password
@@ -46,6 +49,8 @@ fun LoginContent(
     onLoginClick: () -> Unit,
     onSignUpClick: () -> Unit,
 ) {
+    val context = LocalContext.current
+
     Scaffold(containerColor = MaterialTheme.colorScheme.primary) { _ ->
         Column(
             modifier = Modifier
@@ -83,7 +88,7 @@ fun LoginContent(
             if (viewState is LoginViewState.SubmissionError) {
                 Text(
                     modifier = Modifier.padding(all = 8.dp),
-                    text = viewState.errorMessage,
+                    text = viewState.errorMessage.getString(context),
                     color = MaterialTheme.colorScheme.error
                 )
             }
@@ -151,11 +156,13 @@ class LoginViewStateProvider : PreviewParameterProvider<LoginViewState> {
 
             return sequenceOf(
                 LoginViewState.Initial,
-                LoginViewState.Active(activeCredentials),
+                LoginViewState.Active(activeCredentials,
+                    emailInputErrorMessage = UiText.StringText("Please enter an email."),
+                    passwordInputErrorMessage = UiText.StringText("Please enter a password"),),
                 LoginViewState.Submitting(activeCredentials),
                 LoginViewState.SubmissionError(
                     credentials = activeCredentials,
-                    errorMessage = "Oops! Something went wrong...",
+                    errorMessage = UiText.StringText( "Oops! Something went wrong..."),
                 ),
                 LoginViewState.InputError(
                     credentials = emptyCredentials,

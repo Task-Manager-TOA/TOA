@@ -1,5 +1,6 @@
 package ru.fursa.toa.login.ui.login_screen
 
+import ru.fursa.toa.core.utils.UiText
 import ru.fursa.toa.login.domain.model.Credentials
 
 sealed class LoginViewState(
@@ -10,7 +11,9 @@ sealed class LoginViewState(
         credentials = Credentials(),
     )
     data class Active(
-        override val credentials: Credentials
+        override val credentials: Credentials,
+        val emailInputErrorMessage: UiText? = null,
+        val passwordInputErrorMessage: UiText? = null,
     ) : LoginViewState(
         credentials = credentials,
         buttonsEnabled = true
@@ -25,7 +28,7 @@ sealed class LoginViewState(
 
     data class SubmissionError(
         override val credentials: Credentials,
-        val errorMessage: String,
+        val errorMessage: UiText,
     ) : LoginViewState(
         credentials = credentials,
         buttonsEnabled = false

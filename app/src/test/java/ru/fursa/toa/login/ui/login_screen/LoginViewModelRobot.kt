@@ -1,5 +1,10 @@
 package ru.fursa.toa.login.ui.login_screen
 
+import app.cash.turbine.test
+import com.google.common.truth.ExpectFailure.assertThat
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import ru.fursa.toa.login.domain.model.Credentials
 import ru.fursa.toa.login.domain.model.LoginResult
 
@@ -14,7 +19,7 @@ class LoginViewModelRobot {
     }
 
     fun mockLoginForCredentials(credentials: Credentials, result: LoginResult) = apply {
-        fakeCredentialsLoginUseCase.mockLoginResult(credentials, result)
+        fakeCredentialsLoginUseCase.mockLoginResultForCredentials(credentials, result)
     }
 
     fun enterEmail(email: String) = apply {
@@ -36,4 +41,32 @@ class LoginViewModelRobot {
     fun assertViewState(expectedViewState: LoginViewState) = apply {
         assert(viewModel.viewState.value == expectedViewState)
     }
+
+    suspend fun expectViewStates(
+        action: LoginViewModelRobot.() -> Unit,
+        viewStates: List<LoginViewState>,
+    ) = runBlocking {
+       launch {
+           viewModel.viewState.test {
+               action()
+
+               for (state in viewStates) {
+                   assert(awaitItem() == state)
+               }
+
+           }
+       }
+    }
+    suspend fun expectViewStates(viewStates: List<LoginViewState>) = runBlocking {
+        launch {
+            viewModel.viewState.test {
+                for (state in viewStates) {
+                    assert(awaitItem() == state)
+                }
+
+                this.cancel()
+            }
+        }
+    }
+
 }
