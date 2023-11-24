@@ -62,6 +62,12 @@ android {
         }
     }
 
+    kapt {
+        javacOptions {
+            option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+        }
+    }
+
 }
 
 dependencies {
