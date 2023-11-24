@@ -14,7 +14,7 @@ class LoginViewModelRobot {
 
     fun buildViewModel() = apply {
         viewModel = LoginViewModel(
-            loginUseCase = fakeCredentialsLoginUseCase.mock
+            credsUseCase = fakeCredentialsLoginUseCase.mock
         )
     }
 
