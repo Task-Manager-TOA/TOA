@@ -1,4 +1,4 @@
-package ru.fursa.toa.login.ui.login_screen
+package ru.fursa.toa.login.presentation
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
@@ -156,13 +156,15 @@ class LoginViewStateProvider : PreviewParameterProvider<LoginViewState> {
 
             return sequenceOf(
                 LoginViewState.Initial,
-                LoginViewState.Active(activeCredentials,
+                LoginViewState.Active(
+                    activeCredentials,
                     emailInputErrorMessage = UiText.StringText("Please enter an email."),
-                    passwordInputErrorMessage = UiText.StringText("Please enter a password"),),
+                    passwordInputErrorMessage = UiText.StringText("Please enter a password"),
+                ),
                 LoginViewState.Submitting(activeCredentials),
                 LoginViewState.SubmissionError(
                     credentials = activeCredentials,
-                    errorMessage = UiText.StringText( "Oops! Something went wrong..."),
+                    errorMessage = UiText.StringText("Oops! Something went wrong..."),
                 ),
                 LoginViewState.InputError(
                     credentials = emptyCredentials,

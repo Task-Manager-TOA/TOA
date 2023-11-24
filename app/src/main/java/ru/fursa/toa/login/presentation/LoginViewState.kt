@@ -1,4 +1,4 @@
-package ru.fursa.toa.login.ui.login_screen
+package ru.fursa.toa.login.presentation
 
 import ru.fursa.toa.core.utils.UiText
 import ru.fursa.toa.login.domain.model.Credentials

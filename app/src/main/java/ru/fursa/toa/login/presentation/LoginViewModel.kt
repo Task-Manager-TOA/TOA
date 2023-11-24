@@ -1,4 +1,4 @@
-package ru.fursa.toa.login.ui.login_screen
+package ru.fursa.toa.login.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,12 +1,12 @@
-package ru.fursa.toa.login.ui.login_screen
+package ru.fursa.toa.login.presentation.login_screen
 
 import app.cash.turbine.test
-import com.google.common.truth.ExpectFailure.assertThat
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import ru.fursa.toa.login.domain.model.Credentials
 import ru.fursa.toa.login.domain.model.LoginResult
+import ru.fursa.toa.login.presentation.LoginViewModel
+import ru.fursa.toa.login.presentation.LoginViewState
 
 class LoginViewModelRobot {
     private val fakeCredentialsLoginUseCase = FakeCredentialsLoginUseCase()
