@@ -17,7 +17,7 @@ jobs:
       - name: Build Project
         run: |
           chmod +x ./gradlew 
-          ./gradlew assemble
+          ./gradlew clean assemble
 
       - name: Run Tests
         run: ./gradlew test
