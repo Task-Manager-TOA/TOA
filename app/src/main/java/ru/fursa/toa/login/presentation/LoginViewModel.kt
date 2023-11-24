@@ -1,7 +1,8 @@
-package ru.fursa.toa.login.ui.login_screen
+package ru.fursa.toa.login.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,9 +14,11 @@ import ru.fursa.toa.login.domain.model.Email
 import ru.fursa.toa.login.domain.model.LoginResult
 import ru.fursa.toa.login.domain.model.Password
 import ru.fursa.toa.login.domain.usecase.CredentialsLoginUseCase
+import javax.inject.Inject
 
-class LoginViewModel(
-    private val loginUseCase: CredentialsLoginUseCase
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val credsUseCase: CredentialsLoginUseCase
 ) : ViewModel() {
     private val _viewState: MutableStateFlow<LoginViewState> =
         MutableStateFlow(LoginViewState.Initial)
@@ -43,7 +46,7 @@ class LoginViewModel(
         )
 
         viewModelScope.launch {
-            val loginResult = loginUseCase(currentCredentials)
+            val loginResult = credsUseCase(currentCredentials)
 
             _viewState.value = when (loginResult) {
                 is LoginResult.Failure.InvalidCredentials -> {

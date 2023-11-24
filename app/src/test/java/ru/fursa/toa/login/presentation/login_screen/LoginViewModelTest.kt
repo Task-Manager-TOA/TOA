@@ -1,11 +1,9 @@
-package ru.fursa.toa.login.ui.login_screen
+package ru.fursa.toa.login.presentation.login_screen
 
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
@@ -16,6 +14,7 @@ import ru.fursa.toa.login.domain.model.Credentials
 import ru.fursa.toa.login.domain.model.Email
 import ru.fursa.toa.login.domain.model.LoginResult
 import ru.fursa.toa.login.domain.model.Password
+import ru.fursa.toa.login.presentation.LoginViewState
 
 class LoginViewModelTest {
     private lateinit var testRobot: LoginViewModelRobot

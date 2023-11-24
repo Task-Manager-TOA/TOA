@@ -1,13 +1,15 @@
 package ru.fursa.toa.login.domain.usecase
 
+import dagger.hilt.android.AndroidEntryPoint
 import ru.fursa.toa.core.data.Result
 import ru.fursa.toa.login.domain.model.Credentials
 import ru.fursa.toa.login.domain.model.InvalidCredentialsException
 import ru.fursa.toa.login.domain.model.LoginResult
 import ru.fursa.toa.login.domain.repository.LoginRepository
 import ru.fursa.toa.login.domain.repository.TokenRepository
+import javax.inject.Inject
 
-class ProdCredentialsLoginUseCase(
+class ProdCredentialsLoginUseCase @Inject constructor(
     private val loginRepository: LoginRepository,
     private val tokenRepository: TokenRepository,
 ) : CredentialsLoginUseCase {

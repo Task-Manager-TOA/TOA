@@ -1,4 +1,4 @@
-package ru.fursa.toa.login.ui.login_screen
+package ru.fursa.toa.login.presentation.login_screen
 
 import io.mockk.coEvery
 import io.mockk.mockk
