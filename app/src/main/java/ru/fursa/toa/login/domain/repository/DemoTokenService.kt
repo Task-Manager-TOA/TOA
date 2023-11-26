@@ -6,7 +6,9 @@ import ru.fursa.toa.login.domain.model.Token
 import java.util.UUID
 import javax.inject.Inject
 
-class DemoTokenService @Inject constructor(): TokenRepository {
+class DemoTokenService @Inject constructor(
+
+): TokenRepository {
     override suspend fun storeToken(token: Token) = Unit
 
     override suspend fun fetchToken(): Token? = Token(

@@ -9,7 +9,9 @@ import ru.fursa.toa.login.domain.model.Token
 import java.util.UUID
 import javax.inject.Inject
 
-class DemoLoginService @Inject constructor(): LoginRepository {
+class DemoLoginService @Inject constructor(
+
+): LoginRepository {
     override suspend fun login(credentials: Credentials): Result<LoginResponse> {
         val defaultAuthToken = AuthToken(value = UUID.randomUUID().toString())
         val defaultRefreshToken = RefreshToken(value = UUID.randomUUID().toString())

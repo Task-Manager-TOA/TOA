@@ -2,10 +2,10 @@ package ru.fursa.toa.login.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
+fun LoginScreen(viewModel: LoginViewModel = viewModel()) {
     val viewState = viewModel.viewState.collectAsState()
 
     LoginContent(
