@@ -23,6 +23,7 @@ import ru.fursa.toa.core.ui.theme.TOATheme
 @Composable
 fun PrimaryButton(
     text: String,
+    isEnabled: Boolean = false,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     backgroundColor: Color = MaterialTheme.colorScheme.primary,
@@ -30,11 +31,13 @@ fun PrimaryButton(
 ) {
     val buttonColors = buttonColors(
         containerColor = backgroundColor,
-        contentColor = textColor
+        contentColor = textColor,
+        disabledContainerColor = Color.LightGray
     )
 
     Button(
         onClick = onClick,
+        enabled = isEnabled,
         modifier = modifier
             .fillMaxWidth()
             .height(dimensionResource(id = R.dimen.button_height)),

@@ -110,12 +110,14 @@ fun LoginContent(
             }
 
             PrimaryButton(
+                isEnabled = viewState.buttonsEnabled,
                 text = stringResource(R.string.log_in),
                 onClick = { onLoginClick() },
                 backgroundColor = MaterialTheme.colorScheme.secondary
             )
             Spacer(modifier = Modifier.height(12.dp))
             SecondaryButton(
+                isEnabled = viewState.buttonsEnabled,
                 text = stringResource(R.string.sign_up),
                 onClick = { onSignUpClick() },
                 contentColor = MaterialTheme.colorScheme.onPrimary
