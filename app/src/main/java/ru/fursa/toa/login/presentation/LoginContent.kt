@@ -65,10 +65,10 @@ fun LoginContent(
                 painter = painterResource(id = R.drawable.ic_toa),
                 alignment = Alignment.Center,
                 contentDescription = stringResource(R.string.logo),
-                modifier = Modifier.size(250.dp)
+                modifier = Modifier.size(100.dp)
             )
 
-            Spacer(modifier = Modifier.height(120.dp))
+            Spacer(modifier = Modifier.height(80.dp))
             TOATextField(
                 text = viewState.credentials.email.value,
                 onTextChanged = { username -> onEmailChanged(username) },
@@ -76,7 +76,7 @@ fun LoginContent(
                 modifier = Modifier.fillMaxWidth(),
                 errorMessage = (viewState as? LoginViewState.InputError)?.emailInputErrorMessage
             )
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             TOAPasswordTextField(
                 text = viewState.credentials.password.value,
                 onTextChanged = { password -> onPasswordChanged(password) },
