@@ -3,6 +3,7 @@ package ru.fursa.toa.login.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,6 +24,8 @@ class LoginViewModel @Inject constructor(
     private val _viewState: MutableStateFlow<LoginViewState> =
         MutableStateFlow(LoginViewState.Initial)
     val viewState: StateFlow<LoginViewState> = _viewState.asStateFlow()
+
+    val loginCompletedChannel = Channel<Unit>()
 
     fun emailChanged(email: String) {
         val currentCredentials = _viewState.value.credentials
@@ -68,7 +71,14 @@ class LoginViewModel @Inject constructor(
                         passwordInputErrorMessage = UiText.ResourceText(R.string.err_empty_password),
                     )
                 }
-                else -> _viewState.value
+                is LoginResult.Success -> {
+                    viewModelScope.launch {
+                        loginCompletedChannel.send(Unit)
+                    }
+
+                    _viewState.value
+                }
+
             }
         }
     }
