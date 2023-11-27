@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -50,12 +52,14 @@ fun LoginContent(
     onSignUpClick: () -> Unit,
 ) {
     val context = LocalContext.current
+    val scrollState = rememberScrollState()
 
     Scaffold(containerColor = MaterialTheme.colorScheme.primary) { _ ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(24.dp),
+                .padding(start = 24.dp, end = 24.dp, bottom = 8.dp)
+                .verticalScroll(scrollState),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         )
@@ -94,6 +98,17 @@ fun LoginContent(
             }
 
             Spacer(modifier = Modifier.height(48.dp))
+
+            if (viewState is LoginViewState.Submitting) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .padding(bottom = 28.dp)
+                        .size(20.dp),
+                    color = MaterialTheme.colorScheme.secondary,
+                    strokeWidth = 2.dp
+                )
+            }
+
             PrimaryButton(
                 text = stringResource(R.string.log_in),
                 onClick = { onLoginClick() },
